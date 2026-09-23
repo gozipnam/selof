@@ -1,145 +1,368 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+<html lang="ko"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>판매채널 바로가기</title>
+<title>SELOF 채널 금고</title>
+<script id="vault" type="application/json">{"v":1,"iter":600000,"salt":"1KKvS1XJQny/5Xvfv02XOA==","iv":"JftmBT9quHZ5QKRK","data":"SS4rIcJa7no8AveYLeqrxC6YL/Hr3R1P6vGPL1M/lYNNVft7qQ7cyvwZMGFwoV2EMaAWcHNY5OFWPZin9t0eRpRqkslhiL5EEFbizbCbD93PZK1QxmjtKS4RNz0MDQpomjMvtSdQ9X86jZ4n+t7/YzBMc1PN3S+7g0mb/5hO/FlJSxT90wbMvksAQWLfb4lDxdS6xLb1DPfEKhoK5Xt1Ej21vpboFAP3gUliK6aq3lb5xnGIm8suJBaB+TFHv5MHzMB3oNkZTZnobnpGc5BXuwNv8P/zlG83pzIZSn8sI5nGSkWfhznNwrmR4/QkoZQdcTX+s69MTR11Hf7MiYUbj03bDSq/4bFkm+tzFiC+rChMQVgVPOXTMp5pfpjrRocqDtrsWGQtSN9VLzqE9x6fKoKXFH+w12VDoJnQAkttXkXXQUsK6ehSzeX4a0ZrdMOWFQq9hnVymyGoqthz+DfmDqMxWnzRDwWKoQGneyDIlZGTxEW/RnrEFys+H1HEU/aUzaMYA7cK8vZtJmKbI4VHG2DTMrONXkIZbXb4uGfMlhiLmX1IqAJakqIpZ7wBkyxnnQlu3eDuvUgvfXysJY2Lg3SFmcdj3hjoGs0Xe0o0c5rBrR1pLuhHAkRoWyhRiDgwT/pUepIDOuOxKyZxARJCo3C3e1hxHdmGjbzra5e7fGFRA0QQTGf2jP+2xzXaCQoCKgS+bk+6gqD5Tr4omo1cTUUO97mmJK+jt3LF9bnmxyvonaykqVqogtDE79rpjdjnin2z7CoibCjUQd/Kr4MXIEyY18/s0J1tctlyco+hdNSuKkygIKYAbNgioIUoDKiIilwfQkHeLee6GrwkOIMz17LhvkzffDg4NqMHQNoY0ed3KtKTCRIQWEXuvjeiERpKc4koNGg2koq2duDI5BHVBjmB+fm7/KHYnKmkOeo21gbltdAZpPaxF1+mYbRfVBxAWjjhnLiXWHHdAkRho81ri6heMBcKxjKRCuBF6q96RP9EiPP3B6oVEDl/gMV+o+sQw5KVvQAs/CgSDR8JCgnb0DofddxPc0+WqUW7s3BHSDjs3QOiPOyUGcnKfoQXCQHI1P1B"}</script>
 <style>
   :root{
-    --ink:#1c2430;
-    --sub:#68727f;
-    --bg:#eef1f4;
-    --card:#ffffff;
-    --line:#dfe4ea;
-    --accent:#2f6f5e;
+    --ink:#1c2430; --sub:#68727f; --bg:#eef1f4; --card:#fff;
+    --line:#dfe4ea; --accent:#2f6f5e; --warn:#9b2335;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{
     font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
-    background:var(--bg);
-    color:var(--ink);
-    min-height:100vh;
-    padding:48px 20px 64px;
+    background:var(--bg); color:var(--ink); min-height:100vh; padding:40px 16px 64px;
   }
-  .wrap{max-width:860px;margin:0 auto}
-  header{margin-bottom:28px}
-  .eyebrow{
-    font-size:12px;letter-spacing:.16em;color:var(--accent);
-    font-weight:700;text-transform:uppercase;margin-bottom:8px;
+  .wrap{max-width:760px;margin:0 auto}
+  .eyebrow{font-size:11px;letter-spacing:.16em;color:var(--accent);font-weight:700;margin-bottom:6px}
+  h1{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+  .desc{font-size:13px;color:var(--sub);margin-bottom:24px;line-height:1.6}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:16px}
+  label{display:block;font-size:12px;font-weight:700;color:var(--sub);margin:14px 0 6px}
+  input{
+    width:100%;border:1px solid var(--line);border-radius:8px;padding:10px 12px;
+    font-size:14px;font-family:inherit;background:#fff;color:var(--ink);
   }
-  h1{font-size:26px;font-weight:800;letter-spacing:-.02em}
-  h1 span{color:var(--sub);font-weight:500;font-size:16px;margin-left:10px}
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-    gap:14px;
+  input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .btn{
+    display:inline-block;border:none;border-radius:9px;padding:11px 18px;cursor:pointer;
+    font-size:14px;font-weight:700;font-family:inherit;background:var(--ink);color:#fff;
   }
-  .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:18px 18px 16px;
-    display:flex;flex-direction:column;gap:12px;
-    transition:transform .12s ease, box-shadow .12s ease;
+  .btn:hover{background:var(--accent)}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);background:#fff}
+  .btn.sm{padding:6px 11px;font-size:12px;border-radius:7px}
+  .btn:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .msg{font-size:12.5px;margin-top:10px;line-height:1.6}
+  .msg.err{color:var(--warn)} .msg.ok{color:var(--accent)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .entry{
+    border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px;
+    display:flex;flex-direction:column;gap:10px;background:#fff;
   }
-  .card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(28,36,48,.08)}
-  .top{display:flex;align-items:center;gap:10px}
-  .dot{
-    width:38px;height:38px;border-radius:10px;flex:none;
-    display:flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:15px;color:#fff;
+  .entry .head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .entry .name{font-weight:700;font-size:15px}
+  .kv{display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:8px;padding:7px 10px}
+  .kv .k{font-size:11px;color:var(--sub);width:26px;flex:none}
+  .kv .v{
+    flex:1;font-size:12.5px;font-family:ui-monospace,Consolas,monospace;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
   }
-  .name{font-weight:700;font-size:15px}
-  .id-row{
-    display:flex;align-items:center;gap:8px;
-    background:var(--bg);border-radius:8px;padding:8px 10px;
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:560px){.grid2{grid-template-columns:1fr}}
+  .bar{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    margin-bottom:18px;flex-wrap:wrap;
   }
-  .id-label{font-size:11px;color:var(--sub);flex:none}
-  .id-val{
-    font-size:12.5px;font-family:ui-monospace,Consolas,monospace;
-    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;
+  .lockinfo{font-size:12px;color:var(--sub)}
+  .notice{
+    background:#fff8ee;border:1px solid #eadfc8;border-radius:10px;
+    padding:12px 14px;font-size:12.5px;line-height:1.7;color:#6b5b39;margin-bottom:18px;
   }
-  .copy{
-    flex:none;border:1px solid var(--line);background:#fff;color:var(--ink);
-    font-size:11px;padding:4px 9px;border-radius:6px;cursor:pointer;
-    font-family:inherit;
-  }
-  .copy:hover{border-color:var(--accent);color:var(--accent)}
-  .copy.done{background:var(--accent);border-color:var(--accent);color:#fff}
-  a.go{
-    display:block;text-align:center;text-decoration:none;
-    background:var(--ink);color:#fff;font-weight:700;font-size:13.5px;
-    padding:10px 0;border-radius:9px;
-  }
-  a.go:hover{background:var(--accent)}
-  a.go:focus-visible,.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  footer{
-    margin-top:32px;font-size:12.5px;color:var(--sub);line-height:1.7;
-    border-top:1px solid var(--line);padding-top:16px;
-  }
-  @media (prefers-reduced-motion:reduce){.card{transition:none}}
+  .strength{height:5px;border-radius:3px;background:var(--line);margin-top:8px;overflow:hidden}
+  .strength i{display:block;height:100%;width:0;background:var(--warn);transition:width .2s,background .2s}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <div class="eyebrow">SELOF · NUCLID</div>
-    <h1>판매채널 바로가기 <span>7개 채널</span></h1>
-  </header>
-
-  <div class="grid" id="grid"></div>
-
-  <footer>
-    · 아이디 옆 <b>복사</b> 버튼을 누르면 클립보드에 복사됩니다. 비밀번호는 보안을 위해 이 파일에 저장하지 않았습니다.<br>
-    · 각 사이트에 처음 로그인할 때 브라우저의 "비밀번호 저장"을 사용하시면, 다음부터는 클릭 한 번으로 자동 입력됩니다.
-  </footer>
+  <div class="eyebrow">SELOF · NUCLID</div>
+  <h1>판매채널 금고</h1>
+  <div class="desc" id="topdesc">처음 사용: 마스터 암호를 정하고 각 채널의 비밀번호를 입력한 뒤, 암호화된 저장 파일을 내려받으세요.</div>
+  <div id="app"></div>
 </div>
 
 <script>
-const sites = [
-  {name:"쿠팡 윙", url:"https://wing.coupang.com/", id:"selof0513", color:"#c8102e", short:"쿠"},
-  {name:"네이버 스마트스토어", url:"https://sell.smartstore.naver.com/home", id:"admin@selof.co.kr", color:"#03c75a", short:"N"},
-  {name:"에이블리 파트너스", url:"https://my.a-bly.com/dashboard", id:"selof@selof.co.kr", color:"#ff3e6c", short:"에"},
-  {name:"토스쇼핑 파트너스", url:"https://shopping-seller.toss.im/", id:"selof@selof.co.kr", color:"#0064ff", short:"토"},
-  {name:"뉴클리드 공식몰 (아임웹)", url:"https://nuclid1.imweb.me/admin/", id:"sbc@sbcinc.co.kr", color:"#2f6f5e", short:"뉴"},
-  {name:"올웨이즈 셀러", url:"https://alwayzseller.ilevit.com/login", id:"selof0513", color:"#ff7a00", short:"올"},
-  {name:"H몰 파트너", url:"https://partner.hmall.com/", id:"selof0513", color:"#5f259f", short:"H"}
+(function(){
+"use strict";
+
+/* ---------- 상태 ---------- */
+const VAULT_EL = document.getElementById("vault");
+let vaultPayload = null;      // 암호화된 저장 데이터
+try { vaultPayload = JSON.parse(VAULT_EL.textContent); } catch(e){ vaultPayload = null; }
+let entries = null;           // 복호화된 항목 (메모리에만)
+let masterPass = null;        // 세션 동안만 유지
+let lockTimer = null;
+const LOCK_MS = 5 * 60 * 1000;
+const ITER = 600000;
+
+const DEFAULT_ENTRIES = [
+  {name:"쿠팡 윙", url:"https://wing.coupang.com/", id:"selof0513", pw:""},
+  {name:"네이버 스마트스토어", url:"https://sell.smartstore.naver.com/home", id:"admin@selof.co.kr", pw:""},
+  {name:"에이블리 파트너스", url:"https://my.a-bly.com/dashboard", id:"selof@selof.co.kr", pw:""},
+  {name:"토스쇼핑 파트너스", url:"https://shopping-seller.toss.im/", id:"selof@selof.co.kr", pw:""},
+  {name:"뉴클리드 공식몰 (아임웹)", url:"https://nuclid1.imweb.me/admin/", id:"sbc@sbcinc.co.kr", pw:""},
+  {name:"올웨이즈 셀러", url:"https://alwayzseller.ilevit.com/login", id:"selof0513", pw:""},
+  {name:"H몰 파트너", url:"https://partner.hmall.com/", id:"selof0513", pw:""}
 ];
 
-const grid = document.getElementById("grid");
-sites.forEach(s=>{
-  const card = document.createElement("div");
-  card.className = "card";
-  card.innerHTML = `
-    <div class="top">
-      <div class="dot" style="background:${s.color}">${s.short}</div>
-      <div class="name">${s.name}</div>
-    </div>
-    <div class="id-row">
-      <span class="id-label">ID</span>
-      <span class="id-val">${s.id}</span>
-      <button class="copy" type="button">복사</button>
-    </div>
-    <a class="go" href="${s.url}" target="_blank" rel="noopener">접속하기</a>
-  `;
-  card.querySelector(".go").addEventListener("click", (ev)=>{
-    ev.preventDefault();
-    window.open(s.url, "_blank", "noopener,width=1440,height=900,left=80,top=40");
-  });
-  const btn = card.querySelector(".copy");
-  btn.addEventListener("click", async ()=>{
-    try{
-      await navigator.clipboard.writeText(s.id);
-    }catch(e){
-      const ta = document.createElement("textarea");
-      ta.value = s.id; document.body.appendChild(ta);
-      ta.select(); document.execCommand("copy"); ta.remove();
-    }
-    btn.textContent = "완료"; btn.classList.add("done");
-    setTimeout(()=>{btn.textContent="복사"; btn.classList.remove("done");}, 1200);
-  });
-  grid.appendChild(card);
+const app = document.getElementById("app");
+const topdesc = document.getElementById("topdesc");
+
+/* ---------- 유틸 ---------- */
+const enc = new TextEncoder();
+const dec = new TextDecoder();
+function b64(buf){ return btoa(String.fromCharCode(...new Uint8Array(buf))); }
+function unb64(s){ return Uint8Array.from(atob(s), c=>c.charCodeAt(0)); }
+function esc(s){ return String(s).replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m])); }
+
+async function deriveKey(pass, salt){
+  const km = await crypto.subtle.importKey("raw", enc.encode(pass), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey(
+    {name:"PBKDF2", salt, iterations:ITER, hash:"SHA-256"},
+    km, {name:"AES-GCM", length:256}, false, ["encrypt","decrypt"]
+  );
+}
+async function encryptEntries(pass, data){
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const key = await deriveKey(pass, salt);
+  const ct = await crypto.subtle.encrypt({name:"AES-GCM", iv}, key, enc.encode(JSON.stringify(data)));
+  return {v:1, iter:ITER, salt:b64(salt), iv:b64(iv), data:b64(ct)};
+}
+async function decryptEntries(pass, payload){
+  const key = await deriveKey(pass, unb64(payload.salt));
+  const pt = await crypto.subtle.decrypt({name:"AES-GCM", iv:unb64(payload.iv)}, key, unb64(payload.data));
+  return JSON.parse(dec.decode(pt));
+}
+function passProblem(p, p2){
+  if(p !== p2) return "두 입력이 서로 다릅니다.";
+  if(p.length < 12) return "마스터 암호는 12자 이상이어야 합니다.";
+  if(/^\d+$/.test(p)) return "숫자로만 된 암호는 사용할 수 없습니다.";
+  if(!(/[a-zA-Z]/.test(p) && /[\d\W]/.test(p))) return "문자와 숫자(또는 기호)를 섞어 주세요.";
+  return null;
+}
+function strengthPct(p){
+  let s = Math.min(p.length * 6, 60);
+  if(/[a-z]/.test(p) && /[A-Z]/.test(p)) s += 12;
+  if(/\d/.test(p)) s += 12;
+  if(/\W/.test(p)) s += 16;
+  return Math.min(s, 100);
+}
+
+/* ---------- 저장 파일 내보내기 ---------- */
+async function exportVault(){
+  const payload = await encryptEntries(masterPass, entries);
+  VAULT_EL.textContent = JSON.stringify(payload);
+  // 화면을 잠금 상태로 초기화한 뒤 직렬화 → 내보낸 파일에 UI 흔적이 남지 않음
+  const savedApp = app.innerHTML;
+  app.innerHTML = "";
+  const html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+  app.innerHTML = savedApp;
+  rebindAll();
+  const blob = new Blob([html], {type:"text/html"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "셀오브_채널금고.html";
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 3000);
+  vaultPayload = payload;
+}
+
+/* ---------- 자동 잠금 ---------- */
+function armLock(){
+  clearTimeout(lockTimer);
+  lockTimer = setTimeout(()=>{ lock(); }, LOCK_MS);
+}
+function lock(){
+  entries = null; masterPass = null;
+  renderUnlock("자동 잠금되었습니다. 마스터 암호를 다시 입력하세요.");
+}
+["click","keydown","mousemove","touchstart"].forEach(ev=>{
+  document.addEventListener(ev, ()=>{ if(entries) armLock(); }, {passive:true});
 });
+
+/* ---------- 화면: 최초 설정 ---------- */
+function renderSetup(){
+  topdesc.textContent = "처음 사용: 마스터 암호를 정하고 각 채널의 비밀번호를 입력한 뒤, 암호화된 저장 파일을 내려받으세요.";
+  app.innerHTML = `
+    <div class="notice">
+      이 파일에는 아직 아무 비밀번호도 저장되어 있지 않습니다. 아래에 입력한 내용은
+      <b>이 컴퓨터 안에서만</b> 암호화되며, 어디로도 전송되지 않습니다.
+      저장 파일을 내려받은 뒤에는 <b>이 원본 파일은 삭제</b>하고 내려받은 파일만 사용하세요.
+    </div>
+    <div class="panel">
+      <b style="font-size:14px">1. 마스터 암호 설정</b>
+      <label>마스터 암호 (12자 이상, 문자+숫자/기호 조합)</label>
+      <input type="password" id="mp1" autocomplete="new-password">
+      <div class="strength"><i id="meter"></i></div>
+      <label>마스터 암호 확인</label>
+      <input type="password" id="mp2" autocomplete="new-password">
+      <div class="msg" id="mpmsg"></div>
+    </div>
+    <div class="panel">
+      <b style="font-size:14px">2. 채널별 비밀번호 입력</b>
+      <div id="setuplist"></div>
+    </div>
+    <div class="row">
+      <button class="btn" id="makefile">암호화하여 저장 파일 내려받기</button>
+    </div>
+    <div class="msg" id="mkmsg"></div>
+  `;
+  const list = document.getElementById("setuplist");
+  DEFAULT_ENTRIES.forEach((e,i)=>{
+    const d = document.createElement("div");
+    d.className = "entry";
+    d.innerHTML = `
+      <div class="name">${esc(e.name)}</div>
+      <div class="grid2">
+        <div><label>아이디</label><input data-i="${i}" data-f="id" value="${esc(e.id)}"></div>
+        <div><label>비밀번호</label><input type="password" data-i="${i}" data-f="pw" autocomplete="off"></div>
+      </div>`;
+    list.appendChild(d);
+  });
+  const mp1 = document.getElementById("mp1");
+  mp1.addEventListener("input", ()=>{
+    const m = document.getElementById("meter");
+    const pct = strengthPct(mp1.value);
+    m.style.width = pct + "%";
+    m.style.background = pct < 50 ? "var(--warn)" : pct < 80 ? "#c9a24a" : "var(--accent)";
+  });
+  document.getElementById("makefile").addEventListener("click", async ()=>{
+    const p1 = mp1.value, p2 = document.getElementById("mp2").value;
+    const mpmsg = document.getElementById("mpmsg");
+    const prob = passProblem(p1, p2);
+    if(prob){ mpmsg.textContent = prob; mpmsg.className = "msg err"; return; }
+    mpmsg.textContent = ""; 
+    const data = DEFAULT_ENTRIES.map((e,i)=>({
+      name:e.name, url:e.url,
+      id: list.querySelector(`input[data-i="${i}"][data-f="id"]`).value.trim(),
+      pw: list.querySelector(`input[data-i="${i}"][data-f="pw"]`).value
+    }));
+    const missing = data.filter(d=>!d.pw).length;
+    const mk = document.getElementById("mkmsg");
+    masterPass = p1; entries = data;
+    await exportVault();
+    mk.className = "msg ok";
+    mk.textContent = (missing ? `비어 있는 비밀번호 ${missing}개는 나중에 채울 수 있습니다. ` : "")
+      + "저장 파일을 내려받았습니다. 이제 이 원본 파일은 삭제하고, 내려받은 파일을 사용하세요.";
+    armLock();
+  });
+}
+
+/* ---------- 화면: 잠금 해제 ---------- */
+function renderUnlock(note){
+  topdesc.textContent = "마스터 암호를 입력하면 채널 목록이 열립니다.";
+  app.innerHTML = `
+    <div class="panel" style="max-width:420px">
+      ${note ? `<div class="msg" style="margin:0 0 10px">${esc(note)}</div>` : ""}
+      <label>마스터 암호</label>
+      <input type="password" id="unlockpw" autocomplete="off">
+      <div class="row"><button class="btn" id="unlockbtn">열기</button></div>
+      <div class="msg err" id="unlockmsg"></div>
+    </div>`;
+  const go = async ()=>{
+    const pw = document.getElementById("unlockpw").value;
+    const msg = document.getElementById("unlockmsg");
+    try{
+      entries = await decryptEntries(pw, vaultPayload);
+      masterPass = pw;
+      renderVault(); armLock();
+    }catch(e){
+      msg.textContent = "암호가 올바르지 않습니다.";
+    }
+  };
+  document.getElementById("unlockbtn").addEventListener("click", go);
+  document.getElementById("unlockpw").addEventListener("keydown", e=>{ if(e.key==="Enter") go(); });
+  document.getElementById("unlockpw").focus();
+}
+
+/* ---------- 화면: 금고 ---------- */
+function copyText(t, btn){
+  const done = ()=>{ const o = btn.textContent; btn.textContent = "완료";
+    setTimeout(()=>{ btn.textContent = o; }, 1100); };
+  navigator.clipboard.writeText(t).then(done).catch(()=>{
+    const ta = document.createElement("textarea");
+    ta.value = t; document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); ta.remove(); done();
+  });
+}
+function renderVault(){
+  topdesc.textContent = "5분간 사용이 없으면 자동으로 잠깁니다.";
+  app.innerHTML = `
+    <div class="bar">
+      <span class="lockinfo">${entries.length}개 채널 · 잠금 해제됨</span>
+      <span>
+        <button class="btn ghost sm" id="editbtn">비밀번호 수정</button>
+        <button class="btn ghost sm" id="lockbtn">지금 잠그기</button>
+      </span>
+    </div>
+    <div id="list"></div>`;
+  const list = document.getElementById("list");
+  entries.forEach(e=>{
+    const d = document.createElement("div");
+    d.className = "entry";
+    d.innerHTML = `
+      <div class="head">
+        <span class="name">${esc(e.name)}</span>
+        <a class="btn sm go" style="text-decoration:none" href="${esc(e.url)}" target="_blank" rel="noopener">접속</a>
+      </div>
+      <div class="kv"><span class="k">ID</span><span class="v">${esc(e.id)}</span>
+        <button class="btn ghost sm" data-copy="id">복사</button></div>
+      <div class="kv"><span class="k">PW</span><span class="v">••••••••••</span>
+        <button class="btn ghost sm" data-copy="pw">복사</button>
+        <button class="btn ghost sm" data-copy="show">보기</button></div>`;
+    d.querySelector(".go").addEventListener("click", ev=>{
+      ev.preventDefault();
+      window.open(e.url, "_blank", "noopener,width=1440,height=900,left=80,top=40");
+    });
+    d.querySelector('[data-copy="id"]').addEventListener("click", ev=>copyText(e.id, ev.target));
+    d.querySelector('[data-copy="pw"]').addEventListener("click", ev=>copyText(e.pw, ev.target));
+    const showBtn = d.querySelector('[data-copy="show"]');
+    const pwEl = d.querySelectorAll(".kv .v")[1];
+    let shown = false;
+    showBtn.addEventListener("click", ()=>{
+      shown = !shown;
+      pwEl.textContent = shown ? e.pw : "••••••••••";
+      showBtn.textContent = shown ? "숨김" : "보기";
+    });
+    list.appendChild(d);
+  });
+  document.getElementById("lockbtn").addEventListener("click", lock);
+  document.getElementById("editbtn").addEventListener("click", renderEdit);
+}
+
+/* ---------- 화면: 수정 ---------- */
+function renderEdit(){
+  topdesc.textContent = "수정 후 저장 파일을 새로 내려받아 기존 파일을 교체하세요.";
+  app.innerHTML = `<div class="panel"><div id="editlist"></div>
+    <div class="row">
+      <button class="btn" id="saveedit">암호화하여 새 저장 파일 내려받기</button>
+      <button class="btn ghost" id="canceledit">취소</button>
+    </div><div class="msg" id="editmsg"></div></div>`;
+  const list = document.getElementById("editlist");
+  entries.forEach((e,i)=>{
+    const d = document.createElement("div");
+    d.className = "entry";
+    d.innerHTML = `
+      <div class="name">${esc(e.name)}</div>
+      <div class="grid2">
+        <div><label>아이디</label><input data-i="${i}" data-f="id" value="${esc(e.id)}"></div>
+        <div><label>비밀번호</label><input type="password" data-i="${i}" data-f="pw" value="${esc(e.pw)}" autocomplete="off"></div>
+      </div>`;
+    list.appendChild(d);
+  });
+  document.getElementById("canceledit").addEventListener("click", renderVault);
+  document.getElementById("saveedit").addEventListener("click", async ()=>{
+    entries = entries.map((e,i)=>({
+      name:e.name, url:e.url,
+      id:list.querySelector(`input[data-i="${i}"][data-f="id"]`).value.trim(),
+      pw:list.querySelector(`input[data-i="${i}"][data-f="pw"]`).value
+    }));
+    await exportVault();
+    const m = document.getElementById("editmsg");
+    m.className = "msg ok";
+    m.textContent = "새 저장 파일을 내려받았습니다. 기존 파일을 이 파일로 교체하세요.";
+  });
+}
+
+function rebindAll(){ /* innerHTML 복원 후 재렌더 */ if(entries) renderVault(); }
+
+/* ---------- 시작 ---------- */
+if(!vaultPayload){ renderSetup(); } else { renderUnlock(); }
+
+})();
 </script>
-</body>
-</html>
+
+
+</body></html>
