@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>판매채널 바로가기</title>
+<style>
+  :root{
+    --ink:#1c2430;
+    --sub:#68727f;
+    --bg:#eef1f4;
+    --card:#ffffff;
+    --line:#dfe4ea;
+    --accent:#2f6f5e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    min-height:100vh;
+    padding:48px 20px 64px;
+  }
+  .wrap{max-width:860px;margin:0 auto}
+  header{margin-bottom:28px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.16em;color:var(--accent);
+    font-weight:700;text-transform:uppercase;margin-bottom:8px;
+  }
+  h1{font-size:26px;font-weight:800;letter-spacing:-.02em}
+  h1 span{color:var(--sub);font-weight:500;font-size:16px;margin-left:10px}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:14px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 18px 16px;
+    display:flex;flex-direction:column;gap:12px;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(28,36,48,.08)}
+  .top{display:flex;align-items:center;gap:10px}
+  .dot{
+    width:38px;height:38px;border-radius:10px;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:15px;color:#fff;
+  }
+  .name{font-weight:700;font-size:15px}
+  .id-row{
+    display:flex;align-items:center;gap:8px;
+    background:var(--bg);border-radius:8px;padding:8px 10px;
+  }
+  .id-label{font-size:11px;color:var(--sub);flex:none}
+  .id-val{
+    font-size:12.5px;font-family:ui-monospace,Consolas,monospace;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;
+  }
+  .copy{
+    flex:none;border:1px solid var(--line);background:#fff;color:var(--ink);
+    font-size:11px;padding:4px 9px;border-radius:6px;cursor:pointer;
+    font-family:inherit;
+  }
+  .copy:hover{border-color:var(--accent);color:var(--accent)}
+  .copy.done{background:var(--accent);border-color:var(--accent);color:#fff}
+  a.go{
+    display:block;text-align:center;text-decoration:none;
+    background:var(--ink);color:#fff;font-weight:700;font-size:13.5px;
+    padding:10px 0;border-radius:9px;
+  }
+  a.go:hover{background:var(--accent)}
+  a.go:focus-visible,.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  footer{
+    margin-top:32px;font-size:12.5px;color:var(--sub);line-height:1.7;
+    border-top:1px solid var(--line);padding-top:16px;
+  }
+  @media (prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">SELOF · NUCLID</div>
+    <h1>판매채널 바로가기 <span>7개 채널</span></h1>
+  </header>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    · 아이디 옆 <b>복사</b> 버튼을 누르면 클립보드에 복사됩니다. 비밀번호는 보안을 위해 이 파일에 저장하지 않았습니다.<br>
+    · 각 사이트에 처음 로그인할 때 브라우저의 "비밀번호 저장"을 사용하시면, 다음부터는 클릭 한 번으로 자동 입력됩니다.
+  </footer>
+</div>
+
+<script>
+const sites = [
+  {name:"쿠팡 윙", url:"https://wing.coupang.com/", id:"selof0513", color:"#c8102e", short:"쿠"},
+  {name:"네이버 스마트스토어", url:"https://sell.smartstore.naver.com/home", id:"admin@selof.co.kr", color:"#03c75a", short:"N"},
+  {name:"에이블리 파트너스", url:"https://my.a-bly.com/dashboard", id:"selof@selof.co.kr", color:"#ff3e6c", short:"에"},
+  {name:"토스쇼핑 파트너스", url:"https://shopping-seller.toss.im/", id:"selof@selof.co.kr", color:"#0064ff", short:"토"},
+  {name:"뉴클리드 공식몰 (아임웹)", url:"https://nuclid1.imweb.me/admin/", id:"sbc@sbcinc.co.kr", color:"#2f6f5e", short:"뉴"},
+  {name:"올웨이즈 셀러", url:"https://alwayzseller.ilevit.com/login", id:"selof0513", color:"#ff7a00", short:"올"},
+  {name:"H몰 파트너", url:"https://partner.hmall.com/", id:"selof0513", color:"#5f259f", short:"H"}
+];
+
+const grid = document.getElementById("grid");
+sites.forEach(s=>{
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="top">
+      <div class="dot" style="background:${s.color}">${s.short}</div>
+      <div class="name">${s.name}</div>
+    </div>
+    <div class="id-row">
+      <span class="id-label">ID</span>
+      <span class="id-val">${s.id}</span>
+      <button class="copy" type="button">복사</button>
+    </div>
+    <a class="go" href="${s.url}" target="_blank" rel="noopener">접속하기</a>
+  `;
+  card.querySelector(".go").addEventListener("click", (ev)=>{
+    ev.preventDefault();
+    window.open(s.url, "_blank", "noopener,width=1440,height=900,left=80,top=40");
+  });
+  const btn = card.querySelector(".copy");
+  btn.addEventListener("click", async ()=>{
+    try{
+      await navigator.clipboard.writeText(s.id);
+    }catch(e){
+      const ta = document.createElement("textarea");
+      ta.value = s.id; document.body.appendChild(ta);
+      ta.select(); document.execCommand("copy"); ta.remove();
+    }
+    btn.textContent = "완료"; btn.classList.add("done");
+    setTimeout(()=>{btn.textContent="복사"; btn.classList.remove("done");}, 1200);
+  });
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>
